@@ -82,7 +82,7 @@
 
 1. Клонируйте репозиторий:
 ```bash
-git clone <repository-url>
+git clone https://github.com/yomoshio/weather_api
 cd weather-app
 ```
 
