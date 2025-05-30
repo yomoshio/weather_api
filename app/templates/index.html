@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прогноз Погоды</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌤️ Прогноз Погоды</h1>
+            <p>Узнайте прогноз погоды в любом городе мира</p>
+        </header>
+
+        <div class="search-section">
+            <div class="search-container">
+                <input type="text" id="cityInput" placeholder="Введите название города..." autocomplete="off">
+                <div id="suggestions" class="suggestions"></div>
+                <button id="searchBtn">Поиск</button>
+            </div>
+            
+            {% if recent_cities %}
+            <div class="recent-cities">
+                <h3>Недавние поиски:</h3>
+                <div class="city-tags">
+                    {% for city in recent_cities %}
+                        <span class="city-tag" onclick="searchCity('{{ city }}')">{{ city }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Загружаем прогноз погоды...</p>
+        </div>
+
+        <div id="weatherResult" class="weather-result hidden"></div>
+
+        <div class="stats-section">
+            <h3>📊 Популярные города</h3>
+            <div id="statsContainer" class="stats-container"></div>
+        </div>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
